@@ -1,0 +1,9 @@
+{
+  "extends": "@dec0dos/typescript-config/tsconfig.esm.js.strict.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "./",
+    "outDir": "./dist",
+  },
+  "include": ["apps/**/*", "packages/**/*", "*.js"],
+}

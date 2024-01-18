@@ -1,0 +1,48 @@
+{
+  "name": "@dec0dos/example-package",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "apps/**",
+    "packages/**",
+    "../packages/**"
+  ],
+  "main": "./apps/main/main.js",
+  "scripts": {
+    "dev": "yarn run build && node --trace-deprecation --trace-warnings apps/main/main.js",
+    "dev:debug": "yarn run build && node --inspect-brk apps/main/main.js",
+    "dev:watch": "yarn run watch:exec 'yarn run dev'",
+    "start": "yarn run build:release && node apps/main/main.js",
+    "build": "yarn workspaces foreach --all --parallel run build",
+    "build:release": "yarn workspaces foreach --all --parallel run build:release",
+    "build:watch": "yarn run watch:exec 'yarn run build'",
+    "watch:exec": "yarn run nodemon --ext '*' --watch apps --watch packages --exec",
+    "clean": "yarn workspaces foreach --all --parallel run clean && yarn run clean:root",
+    "clean:root": "yarn cache clean && yarn run rimraf node_modules",
+    "format": "yarn run prettier apps packages --check",
+    "format:fix": "yarn run format --write",
+    "lint": "yarn run cross-env NODE_OPTIONS='--preserve-symlinks' eslint --cache --cache-location node_modules/.cache/eslint --max-warnings 0 apps packages",
+    "lint:fix": "yarn run lint -- --fix",
+    "typecheck": "yarn run tsc --pretty --noEmit -p tsconfig.json",
+    "check": "yarn run format; yarn run lint; yarn run typecheck",
+    "fix": "yarn run format:fix && yarn run lint:fix",
+    "test:unit": "node --test",
+    "test:unit:watch": "yarn run test:unit --watch",
+    "test:unit:coverage": "yarn run test:unit --experimental-test-coverage",
+    "upgrade:yarn": "yarn set version latest",
+    "upgrade:deps": "yarn upgrade-interactive"
+  },
+  "devDependencies": {
+    "@dec0dos/eslint-config": "workspace:^",
+    "@dec0dos/prettier-config": "workspace:^",
+    "@dec0dos/typescript-config": "workspace:^",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20.x"
+  },
+  "packageManager": "yarn@4.0.2"
+}

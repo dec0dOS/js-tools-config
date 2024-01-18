@@ -1,0 +1,55 @@
+# Temporary files
+tmp
+temp
+
+# Compiled output
+out
+build
+dist
+
+# Dependencies
+node_modules
+
+# Dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Package manager
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+!.yarn/cache
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Build cache manifests
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+
+# System Files
+.DS_Store
+Thumbs.db
